@@ -2,10 +2,13 @@ import React, { Suspense } from 'react';
 import { renderRoutes, RouteConfigComponentProps } from 'react-router-config';
 import { BeatLoader } from 'react-spinners';
 import styled from 'styled-components';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => {
 	return (
 		<div>
+			<Navbar />
 			<Suspense
 				fallback={
 					<StyledDiv>
@@ -15,6 +18,7 @@ const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => {
 			>
 				{renderRoutes(route?.routes)}
 			</Suspense>
+			<Footer />
 		</div>
 	);
 };
