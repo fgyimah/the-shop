@@ -4,7 +4,7 @@ export interface CartInterface {
 	items: { productId: string; quantity: number }[];
 }
 
-export const CartActions = {
+export const CartActionTypes = {
 	ADD_TO_CART: 'ADD_TO_CART',
 };
 
@@ -15,7 +15,7 @@ export const initialState: CartInterface = {
 // cart actions
 export const addItemToCart = (productId: string) => {
 	return {
-		type: CartActions.ADD_TO_CART,
+		type: CartActionTypes.ADD_TO_CART,
 		payload: {
 			productId,
 		},
@@ -25,7 +25,7 @@ export const addItemToCart = (productId: string) => {
 // cart reducer
 export default function cartReducer(state = initialState, action: AnyAction) {
 	switch (action.type) {
-		case CartActions.ADD_TO_CART:
+		case CartActionTypes.ADD_TO_CART:
 			let items = state.items;
 			const productIndex = items.findIndex((item) => item.productId === action.payload.productId);
 			if (productIndex !== -1) {
