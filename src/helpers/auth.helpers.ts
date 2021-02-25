@@ -11,7 +11,7 @@ export async function loginUser(email: string, password: string) {
 			toast.error('Unable to log you in at this time, try again later');
 		}
 	} catch (error) {
-		toast.error(error.response?.data);
+		toast.error(error.message);
 	}
 }
 
@@ -30,7 +30,7 @@ export async function createUser(email: string, password: string, fullName: stri
 			toast.error('Unable to log you in at this time, try again later');
 		}
 	} catch (error) {
-		toast.error(error.response?.data);
+		toast.error(error.message);
 	}
 }
 
@@ -39,7 +39,7 @@ export async function sendPasswordResetMail(email: string) {
 		await firebase.auth().sendPasswordResetEmail(email);
 		toast.success('Password reset instructions sent to your mail');
 	} catch (error) {
-		toast.error(error.response?.data);
+		toast.error(error.message);
 	}
 }
 
@@ -48,7 +48,7 @@ export async function logoutUser() {
 		await firebase.auth().signOut();
 		toast.success('Logged out successfully');
 	} catch (error) {
-		toast.error(error.response?.data);
+		toast.error(error.message);
 	}
 }
 
