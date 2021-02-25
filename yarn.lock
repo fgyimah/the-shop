@@ -1784,6 +1784,13 @@
     react-is "^16.8.0 || ^17.0.0"
     react-transition-group "^4.4.0"
 
+"@material-ui/icons@^4.11.2":
+  version "4.11.2"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.11.2.tgz#b3a7353266519cd743b6461ae9fdfcb1b25eb4c5"
+  integrity sha512-fQNsKX2TxBmqIGJCSi3tGTO/gZ+eJgWmMJkgDiOfyNaunNaxcklJQFaFogYcFl0qFuaEz1qaXYXboa/bUXVSOQ==
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+
 "@material-ui/styles@^4.11.3":
   version "4.11.3"
   resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.11.3.tgz#1b8d97775a4a643b53478c895e3f2a464e8916f2"
@@ -2342,6 +2349,13 @@
   integrity sha512-ofHbZMlp0Y2baOHgsWBQ4K3AttxY61bDMkwTiBOkPg7U6C/3UwwB5WaIx28JmSVi/eX3uFEMRo61BV22fDQIvg==
   dependencies:
     "@types/history" "*"
+    "@types/react" "*"
+
+"@types/react-tabs@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@types/react-tabs/-/react-tabs-2.3.2.tgz#99fb6866bbc6912d44f7bbc99eca03fbbd217960"
+  integrity sha512-QfMelaJSdMcp+CenKhATp12XFFqqUcLXILgwpX3dgWfVYNZPtsLXZDDCRsVn+kwmBOWB+DFPKpQorxbUhnXINw==
+  dependencies:
     "@types/react" "*"
 
 "@types/react-transition-group@^4.2.0":
@@ -3883,7 +3897,7 @@ cliui@^6.0.0:
     strip-ansi "^6.0.0"
     wrap-ansi "^6.2.0"
 
-clsx@^1.0.4:
+clsx@^1.0.4, clsx@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
   integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
@@ -9732,7 +9746,7 @@ prompts@2.4.0, prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -10105,6 +10119,14 @@ react-spinners@^0.10.6:
   integrity sha512-UPLcaMFhFnLWtS1zVDDT14ssW08gnZ44cjPN6GL27dEGboiCvRSthOilZXRDWESp449GB2iI6gjEbxzaMtA+dg==
   dependencies:
     "@emotion/core" "^10.0.35"
+
+react-tabs@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-tabs/-/react-tabs-3.2.0.tgz#0fd8d595ef26d3684da876c27a3cc90392dffb40"
+  integrity sha512-q7oNapNRoYTQq8gDhApXwdBheuuN5qQ4YvUaQUAkb6OSSttJulBAvxJ0FS6W5uojvMxbbIZKu1f2I+GXISoLjw==
+  dependencies:
+    clsx "^1.1.0"
+    prop-types "^15.5.0"
 
 react-transition-group@^4.4.0:
   version "4.4.1"

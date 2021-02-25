@@ -1,25 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import AuthenticationModal from './AuthenticationModal';
 
 const Navbar: React.FC = () => {
-	const loginUser = () => {};
+	const [authModalOpen, setAuthModalOpen] = React.useState(false);
+	const loginUser = () => {
+		setAuthModalOpen(true);
+	};
 
 	return (
-		<StyledNav>
-			<NavLink to="/" className="logo">
-				<h1>tendoSHOP</h1>
-			</NavLink>
-			<div>
-				<input type="text" className="searchField" placeholder="Search Products" />
-				<span className="login" onClick={loginUser}>
-					LOGIN <i className="fas fa-sign-in-alt"></i>
-				</span>
-				<i className="fas fa-shopping-cart">
-					<div className="cart-number">23</div>
-				</i>
-			</div>
-		</StyledNav>
+		<>
+			<StyledNav>
+				<NavLink to="/" className="logo">
+					<h1>tendoSHOP</h1>
+				</NavLink>
+				<div>
+					<input type="text" className="searchField" placeholder="Search Products" />
+					<span className="login" onClick={loginUser}>
+						LOGIN <i className="fas fa-sign-in-alt"></i>
+					</span>
+					<i className="fas fa-shopping-cart">
+						<div className="cart-number">23</div>
+					</i>
+				</div>
+			</StyledNav>
+			<AuthenticationModal open={authModalOpen} onClose={() => setAuthModalOpen(false)} />
+		</>
 	);
 };
 
