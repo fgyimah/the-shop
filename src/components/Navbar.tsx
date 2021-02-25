@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import AuthenticationModal from './AuthenticationModal';
+import firebase from '../firebase';
+import { RootState } from '../store/root';
 
 const Navbar: React.FC = () => {
 	const [authModalOpen, setAuthModalOpen] = React.useState(false);
+	const cart = useSelector((state: RootState) => state.cart);
 	const loginUser = () => {
 		setAuthModalOpen(true);
+	};
+
+	const isAuthenticated = () => {
+		return firebase.auth().currentUser !== null;
 	};
 
 	return (
@@ -17,11 +25,17 @@ const Navbar: React.FC = () => {
 				</NavLink>
 				<div>
 					<input type="text" className="searchField" placeholder="Search Products" />
-					<span className="login" onClick={loginUser}>
-						LOGIN <i className="fas fa-sign-in-alt"></i>
-					</span>
+					{!isAuthenticated() ? (
+						<span className="login" onClick={loginUser}>
+							LOGIN <i className="fas fa-sign-in-alt"></i>
+						</span>
+					) : (
+						<NavLink to="/profile">{firebase.auth().currentUser?.email}</NavLink>
+					)}
 					<i className="fas fa-shopping-cart">
-						<div className="cart-number">23</div>
+						<div className="cart-number">
+							{cart.items.reduce((cum, curr) => curr.quantity + cum, 0)}
+						</div>
 					</i>
 				</div>
 			</StyledNav>
@@ -81,12 +95,12 @@ const StyledNav = styled.nav`
 	.cart-number {
 		position: absolute;
 		width: 20px;
-		background: #000;
-		color: #fff;
+		background: #fff;
+		color: #000;
 		font-size: 1.6rem;
 		top: -8px;
 		right: -10px;
-		border-radius: 100px;
+		border-radius: 10px;
 	}
 
 	@media screen and (max-width: 720px) {
