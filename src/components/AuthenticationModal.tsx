@@ -119,6 +119,27 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 										),
 									}}
 								/>
+								<TextField
+									label="Confirm Password"
+									type={passwordShown ? 'text' : 'password'}
+									className="field"
+									fullWidth
+									inputProps={{ className: 'input-field' }}
+									variant="outlined"
+									InputProps={{
+										endAdornment: (
+											<InputAdornment position="end">
+												<IconButton
+													aria-label="toggle password visibility"
+													onClick={handleClickShowPassword}
+													onMouseDown={handleMouseDownPassword}
+												>
+													{passwordShown ? <Visibility /> : <VisibilityOff />}
+												</IconButton>
+											</InputAdornment>
+										),
+									}}
+								/>
 								<span className="forgot-password">Forgot Password?</span>
 								<Button variant="contained" className="btn">
 									SIGN UP
