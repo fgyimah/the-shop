@@ -12,9 +12,10 @@ import styled from 'styled-components';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import * as authHelpers from '../helpers/auth.helpers';
-import 'react-tabs/style/react-tabs.css';
 import { toast } from 'react-toastify';
+import * as authHelpers from '../helpers/auth.helpers';
+
+import 'react-tabs/style/react-tabs.css';
 
 interface Props {
 	open: boolean;
@@ -59,7 +60,7 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 			name: Yup.string().required(),
 			password: Yup.string().min(8).max(32).required(),
 			confirmPassword: Yup.string()
-				.oneOf([Yup.ref('password')])
+				.oneOf([Yup.ref('password')], 'Passwords must match')
 				.required(),
 		}),
 	});
@@ -75,6 +76,7 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 	const forgotPasswordHandler = async () => {
 		if (!loginForm.values.email || loginForm.errors.email) {
 			toast.error('Please specify a valid email first');
+			return;
 		}
 
 		await authHelpers.sendPasswordResetMail(loginForm.values.email);
@@ -130,7 +132,9 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 										),
 									}}
 								/>
-								<span className="forgot-password">Forgot Password?</span>
+								<span className="forgot-password" onClick={forgotPasswordHandler}>
+									Forgot Password?
+								</span>
 								<Button variant="contained" className="btn" type="submit">
 									LOGIN
 								</Button>
@@ -226,9 +230,6 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 										),
 									}}
 								/>
-								<span className="forgot-password" onClick={forgotPasswordHandler}>
-									Forgot Password?
-								</span>
 								<Button variant="contained" className="btn" type="submit">
 									SIGN UP
 								</Button>
