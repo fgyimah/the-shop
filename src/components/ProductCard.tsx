@@ -16,10 +16,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 				<h4>{product.title}</h4>
 				<p>{product.description}</p>
 			</div>
-			<div className="cta">
-				<div className="buy-btn">BUY NOW</div>
-				<div className="add-to-cart-btn">ADD TO CART</div>
-			</div>
+			<div className="add-to-cart-btn">ADD TO CART</div>
 		</StyledCard>
 	);
 };
@@ -39,26 +36,13 @@ const StyledCard = styled.div`
 	.info {
 		text-align: center;
 	}
-	.cta {
-		display: flex;
-		align-items: center;
-		margin-top: 1rem;
-
-		& > div {
-			width: 100%;
-		}
-	}
-	.buy-btn {
-		background-color: #1212d8;
-		color: #fff;
-		padding: 1rem 2rem;
-		cursor: pointer;
-	}
 	.add-to-cart-btn {
-		background-color: #1ed32d;
+		background-color: #000;
 		color: #fff;
 		padding: 1rem 2rem;
 		cursor: pointer;
+		width: 100%;
+		text-align: center;
 	}
 `;
 

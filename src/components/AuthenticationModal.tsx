@@ -11,6 +11,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import styled from 'styled-components';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { useFormik } from 'formik';
+import { BeatLoader } from 'react-spinners';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import * as authHelpers from '../helpers/auth.helpers';
@@ -24,6 +25,9 @@ interface Props {
 
 const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 	const [passwordShown, setPasswordShown] = React.useState(false);
+	const [loginLoading, setLoginLoading] = React.useState(false);
+	const [registerLoading, setRegisterLoading] = React.useState(false);
+
 	const loginForm = useFormik<{
 		email: string;
 		password: string;
@@ -33,7 +37,10 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 			password: '',
 		},
 		onSubmit: async (values) => {
-			await authHelpers.loginUser(values.email, values.password);
+			setLoginLoading(true);
+			const loggedIn = await authHelpers.loginUser(values.email, values.password);
+			if (loggedIn) onClose();
+			setLoginLoading(false);
 		},
 		validationSchema: Yup.object({
 			email: Yup.string().email().required(),
@@ -53,7 +60,10 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 			confirmPassword: '',
 		},
 		onSubmit: async (values) => {
-			await authHelpers.createUser(values.email, values.password, values.name);
+			setRegisterLoading(true);
+			const registered = await authHelpers.createUser(values.email, values.password, values.name);
+			if (registered) onClose();
+			setRegisterLoading(false);
 		},
 		validationSchema: Yup.object({
 			email: Yup.string().email().required(),
@@ -82,10 +92,27 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 		await authHelpers.sendPasswordResetMail(loginForm.values.email);
 	};
 
+	const logInWithGoogle = async () => {
+		setLoginLoading(true);
+		setRegisterLoading(true);
+		const loggedIn = await authHelpers.loginWithGoogle();
+		if (loggedIn) onClose();
+		setLoginLoading(false);
+		setRegisterLoading(false);
+	};
+
 	return (
-		<Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+		<Dialog
+			open={open}
+			onClose={() => {
+				if (loginLoading || registerLoading) return;
+				onClose();
+			}}
+			maxWidth="sm"
+			fullWidth
+		>
 			<DialogContent>
-				<Tabs>
+				<Tabs disabled={loginLoading || registerLoading}>
 					<TabList>
 						<Tab>Login</Tab>
 						<Tab>Sign up</Tab>
@@ -105,6 +132,7 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 									onChange={loginForm.handleChange}
 									error={!!loginForm.errors.email}
 									helperText={loginForm.errors.email}
+									disabled={loginLoading}
 								/>
 								<TextField
 									label="Password"
@@ -118,6 +146,7 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 									onChange={loginForm.handleChange}
 									error={!!loginForm.errors.password}
 									helperText={loginForm.errors.password}
+									disabled={registerLoading}
 									InputProps={{
 										endAdornment: (
 											<InputAdornment position="end">
@@ -135,14 +164,15 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 								<span className="forgot-password" onClick={forgotPasswordHandler}>
 									Forgot Password?
 								</span>
-								<Button variant="contained" className="btn" type="submit">
-									LOGIN
+								<Button variant="contained" className="btn" type="submit" disabled={loginLoading}>
+									{loginLoading ? <BeatLoader color="#fff" /> : 'LOGIN'}
 								</Button>
 								<p>OR</p>
 								<Button
 									variant="contained"
 									className="btn btn-google"
-									onClick={authHelpers.loginWithGoogle}
+									onClick={logInWithGoogle}
+									disabled={loginLoading}
 								>
 									LOGIN WITH GOOGLE
 								</Button>
@@ -164,6 +194,7 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 									onChange={signUpForm.handleChange}
 									error={!!signUpForm.errors.email}
 									helperText={signUpForm.errors.email}
+									disabled={registerLoading}
 								/>
 								<TextField
 									label="Name"
@@ -177,6 +208,7 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 									onChange={signUpForm.handleChange}
 									error={!!signUpForm.errors.name}
 									helperText={signUpForm.errors.name}
+									disabled={registerLoading}
 								/>
 								<TextField
 									label="Password"
@@ -190,6 +222,7 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 									onChange={signUpForm.handleChange}
 									error={!!signUpForm.errors.password}
 									helperText={signUpForm.errors.password}
+									disabled={registerLoading}
 									InputProps={{
 										endAdornment: (
 											<InputAdornment position="end">
@@ -216,6 +249,7 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 									onChange={signUpForm.handleChange}
 									error={!!signUpForm.errors.confirmPassword}
 									helperText={signUpForm.errors.confirmPassword}
+									disabled={registerLoading}
 									InputProps={{
 										endAdornment: (
 											<InputAdornment position="end">
@@ -230,14 +264,20 @@ const AuthenticationModal: React.FC<Props> = ({ open, onClose }) => {
 										),
 									}}
 								/>
-								<Button variant="contained" className="btn" type="submit">
-									SIGN UP
+								<Button
+									variant="contained"
+									className="btn"
+									type="submit"
+									disabled={registerLoading}
+								>
+									{registerLoading ? <BeatLoader color="#fff" /> : 'SIGN UP'}
 								</Button>
 								<p>OR</p>
 								<Button
 									variant="contained"
 									className="btn btn-google"
-									onClick={authHelpers.loginWithGoogle}
+									onClick={logInWithGoogle}
+									disabled={registerLoading}
 								>
 									CONTINUE WITH GOOGLE
 								</Button>
