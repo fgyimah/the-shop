@@ -8,14 +8,22 @@ import { RootState } from '../store/root';
 
 const Navbar: React.FC = () => {
 	const [authModalOpen, setAuthModalOpen] = React.useState(false);
+	const [loggedIn, setLoggedIn] = React.useState(false);
 	const cart = useSelector((state: RootState) => state.cart);
 	const loginUser = () => {
 		setAuthModalOpen(true);
 	};
 
-	const isAuthenticated = () => {
-		return firebase.auth().currentUser !== null;
-	};
+	React.useEffect(() => {
+		const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+			if (user !== null) setLoggedIn(true);
+			else setLoggedIn(false);
+		});
+
+		return () => {
+			unsubscribe();
+		};
+	}, []);
 
 	return (
 		<>
@@ -25,12 +33,12 @@ const Navbar: React.FC = () => {
 				</NavLink>
 				<div>
 					<input type="text" className="searchField" placeholder="Search Products" />
-					{!isAuthenticated() ? (
+					{loggedIn ? (
+						<NavLink to="/profile">{firebase.auth().currentUser?.email}</NavLink>
+					) : (
 						<span className="login" onClick={loginUser}>
 							LOGIN <i className="fas fa-sign-in-alt"></i>
 						</span>
-					) : (
-						<NavLink to="/profile">{firebase.auth().currentUser?.email}</NavLink>
 					)}
 					<i className="fas fa-shopping-cart">
 						<div className="cart-number">
