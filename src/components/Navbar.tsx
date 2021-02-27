@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AuthenticationModal from './AuthenticationModal';
 import firebase from '../firebase';
+import { logoutUser } from '../helpers/auth.helpers';
 import { RootState } from '../store/root';
 
 const Navbar: React.FC = () => {
@@ -32,19 +33,27 @@ const Navbar: React.FC = () => {
 					<h1>tendoSHOP</h1>
 				</NavLink>
 				<div>
-					<input type="text" className="searchField" placeholder="Search Products" />
+					{/* <input type="text" className="searchField" placeholder="Search Products" /> */}
 					{loggedIn ? (
-						<NavLink to="/profile">{firebase.auth().currentUser?.email}</NavLink>
+						<span className="profile">{firebase.auth().currentUser?.email}</span>
 					) : (
 						<span className="login" onClick={loginUser}>
 							LOGIN <i className="fas fa-sign-in-alt"></i>
 						</span>
 					)}
-					<i className="fas fa-shopping-cart">
-						<div className="cart-number">
-							{cart.items.reduce((cum, curr) => curr.quantity + cum, 0)}
-						</div>
-					</i>
+					<div>
+						{loggedIn && (
+							<span onClick={logoutUser} className="login">
+								LOGOUT
+								<i className="fas fa-sign-in-alt" />
+							</span>
+						)}
+						<i className="fas fa-shopping-cart">
+							<div className="cart-number">
+								{cart.items.reduce((cum, curr) => curr.quantity + cum, 0)}
+							</div>
+						</i>
+					</div>
 				</div>
 			</StyledNav>
 			<AuthenticationModal open={authModalOpen} onClose={() => setAuthModalOpen(false)} />
@@ -58,6 +67,10 @@ const StyledNav = styled.nav`
 	align-items: center;
 	padding: 1rem;
 	box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2);
+
+	& > div {
+		display: flex;
+	}
 
 	.logo {
 		font-weight: bold;
@@ -79,25 +92,27 @@ const StyledNav = styled.nav`
 
 	.login {
 		display: inline-block;
-		padding: 0.3rem 1.5rem;
+		padding: 0.3rem 1.3rem;
 		background: #000;
 		color: #fff;
-		margin-left: 3rem;
+		margin-left: 1rem;
 		margin-right: 1rem;
 		cursor: pointer;
 		border-radius: 6px;
+		text-align: center;
 	}
 
 	.fa-sign-in-alt {
-		font-size: 12px;
+		font-size: 16px;
 		margin: 0.5rem;
 	}
 
 	.fa-shopping-cart {
 		position: relative;
-		margin-left: 2rem;
-		margin-right: 2rem;
+		margin-left: 0.4rem;
+		margin-right: 0.8rem;
 		font-size: 20px;
+		cursor: pointer;
 	}
 
 	.cart-number {
@@ -110,10 +125,15 @@ const StyledNav = styled.nav`
 		right: -10px;
 		border-radius: 10px;
 	}
+	.profile {
+		margin-left: 0.1rem;
+		margin-right: 0.2rem;
+	}
 
 	@media screen and (max-width: 720px) {
 		flex-direction: column;
 		align-items: center;
+		text-align: center;
 
 		.searchField {
 			width: 90vw;
@@ -128,6 +148,12 @@ const StyledNav = styled.nav`
 
 		.fa-shopping-cart {
 			margin-top: 1rem;
+		}
+		.profile {
+			display: block;
+		}
+		& > div {
+			flex-direction: column;
 		}
 	}
 `;
