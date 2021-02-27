@@ -1,46 +1,73 @@
-# Getting Started with Create React App
+# tendoSHOP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![App Version](https://img.shields.io/badge/version-0.1.0-green.svg)
+![Typescript version](https://img.shields.io/badge/typescript-3.9.7-blue.svg)
+![React version](https://img.shields.io/badge/react-17.0.0-blue)
 
-## Available Scripts
+E-commerce shopping cart application written in typescript using the ReactJS framework, as firebase as backend.
 
-In the project directory, you can run:
+## Getting Started
 
-### `yarn start`
+To begin the following are recommended
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Node v12.8 or higher
+- Yarn v1.22.0 or higher
+- Firebase account
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To begin the project is development mode
 
-### `yarn test`
+- Install NodeJS and Yarn
+- Clone the repository from the Github URL
+- Run `yarn install` or simply `yarn` to install all the project's dependencies.
+- Create a firebase project and allow email authentication, google authentication, firestore with permission set to read and write by unauthorized users.
+- Copy the `.env.example` file and create a duplicate with the name `.env` and fill in the firebase credentials.
+- Run `yarn start` to run the project in development mode
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Dependencies
 
-### `yarn build`
+> Note that not all dependencies are written here, this list is limited to core project dependencies only
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `react` - Core Frontend library for building reusable components
+- `@material-ui/core && @material/icons` - Material design system component and icons library for react
+- `firebase` - Javascript firebase client for connecting to firebase.
+- `formik` - library for easy management of forms in a react application
+- `react-paystack` - For integrating paystack payment api into react apps
+- `react-router-dom` - For routing in react apps
+- `react-router-config` - For declaring react routes in a declarative way
+- `react-share` - For easy sharing to social application from a react app
+- `react-spinners` - For loading animations in react apps
+- `react-tabs` - For easy tab implementation in react apps
+- `react-toastify` - For displaying nice toast messages in react applications
+- `redux` - State management tool for javascript apps
+- `react-redux` - For connecting react apps to redux states
+- `redux-thunk` - For writing redux actions that returns functions instead of objects
+- `redux-persist` - For saving redux state, even over full page refresh
+- `redux-devtools-extension` - For connecting redux apps to the redux devtools extension in chrome, firefox and edge browsers
+- `styled-components` - For declaring styles for react apps in a component based structure
+- `typescript` - Allows for typescript support and compilation
+- `yup` - For Easy form validation, Yup + Formik = 🤩
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Application Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All programming is done in the `src` folder.
 
-### `yarn eject`
+The `src` folder is structured as follows:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+.
++--- components/  # Common components to be shared among different pages
++--- helpers/     # Helper files
++--- layouts/     # Contains application layout files
++--- pages/       # Contains actual pages in the application
++--- store/       # Contains all data related to redux state
++--- theme/       # Contains global styles of the application
++--- @types.ts    # Contains general typescript interfaces on common Objects
++--- App.tsx      # Root component of the entire application
++--- firebase.ts  # Contains firebase initial setup
++--- index.tsx    # Starting point of the application
++--- routes.ts    # Contains the routes declarations of the application
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+> Application is initially deployed to netlify with [this URL](https://tendo-shop.netlify.app)
