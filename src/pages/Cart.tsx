@@ -121,6 +121,19 @@ const StyledDiv = styled.div`
 			font-size: 1.8rem;
 		}
 	}
+
+	@media screen and (max-width: 720px) {
+		.checkout-header {
+			flex-direction: column;
+			text-align: center;
+			align-items: center;
+			.header-block {
+				&:last-child {
+					width: 23% !important;
+				}
+			}
+		}
+	}
 `;
 
 export default Cart;

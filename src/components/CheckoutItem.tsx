@@ -91,6 +91,13 @@ const StyledDiv = styled.div`
 			cursor: pointer;
 		}
 	}
+	@media screen and (max-width: 720px) {
+		.checkout-item {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+	}
 `;
 
 export default CheckoutItem;
