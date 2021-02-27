@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { Product } from '../@types';
+import { RootState } from '../store/root';
+import { addItemToCart } from '../store/cart.reducer';
 
 interface Props {
 	product: Product;
@@ -9,9 +12,16 @@ interface Props {
 
 const ProductCard: React.FC<Props> = ({ product }) => {
 	const history = useHistory();
+	const cart = useSelector((state: RootState) => state.cart);
+	const dispatch = useDispatch();
+
+	const addedToCart = () => {
+		return cart.items.findIndex((item) => item.productId === product.id) !== -1;
+	};
 
 	const addToCart = () => {
-		console.log('add to cart!!! ', product.id);
+		if (addedToCart()) return;
+		dispatch(addItemToCart(product.id));
 	};
 
 	return (
@@ -23,8 +33,11 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 				<h4>{product.name}</h4>
 				<p className="item-description">{product.description}</p>
 			</div>
-			<div className="add-to-cart-btn" onClick={addToCart}>
-				ADD TO CART
+			<div
+				className={`add-to-cart-btn ${addedToCart() ? 'added-to-cart' : ''}`}
+				onClick={addToCart}
+			>
+				{addedToCart() ? 'ADDED TO CART' : 'ADD TO CART'}
 			</div>
 			<div className="price-div" onClick={() => history.push(`/products/${product.id}`)}>
 				GH₵ {product.price}
@@ -57,6 +70,10 @@ const StyledCard = styled.div`
 		cursor: pointer;
 		width: 100%;
 		text-align: center;
+	}
+	.added-to-cart {
+		background-color: #2c2929;
+		cursor: not-allowed;
 	}
 
 	.item-description {

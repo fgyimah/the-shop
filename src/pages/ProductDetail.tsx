@@ -1,17 +1,22 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 import { useParams, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { Product } from '../@types';
 import firebase from '../firebase';
+import { RootState } from '../store/root';
+import { addItemToCart } from '../store/cart.reducer';
 
 const ProductDetail: React.FC = () => {
 	const [loading, setLoading] = React.useState(true);
 	const [product, setProduct] = React.useState<Product>();
 	const params = useParams<{ id: string }>();
 	const history = useHistory();
+	const cart = useSelector((state: RootState) => state.cart);
+	const dispatch = useDispatch();
 
 	React.useEffect(() => {
 		const db = firebase.firestore();
@@ -35,6 +40,15 @@ const ProductDetail: React.FC = () => {
 		fetchProduct();
 	}, [params.id, history]);
 
+	const addedToCart = () => {
+		return cart.items.findIndex((item) => item.productId === product?.id) !== -1;
+	};
+
+	const addToCart = () => {
+		if (addedToCart()) return;
+		dispatch(addItemToCart(product?.id!));
+	};
+
 	if (loading) {
 		return (
 			<LoadingDiv>
@@ -53,8 +67,21 @@ const ProductDetail: React.FC = () => {
 				<h2 className="product-price">GH₵ {product?.price}</h2>
 				<p className="product-description">{product?.description}</p>
 				<div className="buttons">
-					<Button variant="contained" className="btn btn-cart">
-						ADD TO CART <i className="far fa-heart"></i>
+					<Button
+						variant="contained"
+						className="btn btn-cart"
+						disabled={addedToCart()}
+						onClick={addToCart}
+					>
+						{addedToCart() ? (
+							<>
+								ADDED TO CART <i className="fas fa-heart"></i>
+							</>
+						) : (
+							<>
+								ADD TO CART <i className="far fa-heart"></i>
+							</>
+						)}
 					</Button>
 					<Button variant="contained" className="btn btn-whatsapp">
 						SHARE ON WHATSAPP <i className="fab fa-whatsapp"></i>
