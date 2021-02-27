@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { Product } from '../@types';
 
 interface Props {
@@ -7,13 +8,15 @@ interface Props {
 }
 
 const ProductCard: React.FC<Props> = ({ product }) => {
+	const history = useHistory();
+
 	return (
-		<StyledCard>
+		<StyledCard onClick={() => history.push(`/products/${product.id}`)}>
 			<div className="image">
-				<img src={product.imageUrl} alt={product.title} />
+				<img src={product.imageUrl} alt={product.name} />
 			</div>
 			<div className="info">
-				<h4>{product.title}</h4>
+				<h4>{product.name}</h4>
 				<p>{product.description}</p>
 			</div>
 			<div className="add-to-cart-btn">ADD TO CART</div>
