@@ -14,7 +14,7 @@ To begin the following are recommended
 - Yarn v1.22.0 or higher
 - Firebase account
 
-To begin the project is development mode
+To begin the project in development mode
 
 - Install NodeJS and Yarn
 - Clone the repository from the Github URL
