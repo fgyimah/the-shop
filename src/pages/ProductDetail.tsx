@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
+import { WhatsappShareButton } from 'react-share';
 import { Product } from '../@types';
 import firebase from '../firebase';
 import { RootState } from '../store/root';
@@ -83,9 +84,11 @@ const ProductDetail: React.FC = () => {
 							</>
 						)}
 					</Button>
-					<Button variant="contained" className="btn btn-whatsapp">
-						SHARE ON WHATSAPP <i className="fab fa-whatsapp"></i>
-					</Button>
+					<WhatsappShareButton url={window.location.href}>
+						<span className="btn btn-whatsapp" title={`${product?.name} - GH₵ ${product?.price}`}>
+							SHARE ON WHATSAPP <i className="fab fa-whatsapp"></i>
+						</span>
+					</WhatsappShareButton>
 				</div>
 			</div>
 			<Button variant="contained" className="back-btn" onClick={() => history.push('/products')}>
@@ -127,9 +130,12 @@ const StyledDiv = styled.div`
 		.btn-cart {
 			background-color: #000;
 		}
-		.btn-whatsapp {
-			background-color: green;
-		}
+	}
+	.btn-whatsapp {
+		background-color: green !important;
+		color: #fff !important;
+		padding: 1.1rem 2rem !important;
+		padding-bottom: 1.7rem !important;
 	}
 	.back-btn {
 		height: max-content;
@@ -165,11 +171,12 @@ const StyledDiv = styled.div`
 				margin-top: -1rem;
 				width: 90%;
 			}
-			.btn-whatsapp {
-				background-color: green;
-				margin-top: 1rem;
-				width: 90%;
-			}
+		}
+		.btn-whatsapp {
+			display: block;
+			margin-top: 1rem !important;
+			padding: 0 !important;
+			width: 90vw !important;
 		}
 		.back-btn {
 			width: 90%;
