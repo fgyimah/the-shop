@@ -24,7 +24,6 @@ const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => {
 };
 
 const StyledDiv = styled.div`
-	width: 100vw;
 	height: 80vh;
 	display: flex;
 	justify-content: center;
