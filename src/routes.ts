@@ -8,6 +8,11 @@ const routes: RouteConfig[] = [
 		component: MainLayout,
 		routes: [
 			{ path: '/', exact: true, component: lazy(() => import('./pages/Home')) },
+			{
+				path: '/cart',
+				exact: true,
+				component: lazy(() => import('./pages/Cart')),
+			},
 			{ path: '/products', exact: true, component: lazy(() => import('./pages/Home')) },
 			{
 				path: '/products/:id',

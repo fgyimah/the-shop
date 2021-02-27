@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AuthenticationModal from './AuthenticationModal';
 import firebase from '../firebase';
@@ -10,6 +10,7 @@ import { RootState } from '../store/root';
 const Navbar: React.FC = () => {
 	const [authModalOpen, setAuthModalOpen] = React.useState(false);
 	const [loggedIn, setLoggedIn] = React.useState(false);
+	const history = useHistory();
 	const cart = useSelector((state: RootState) => state.cart);
 	const loginUser = () => {
 		setAuthModalOpen(true);
@@ -48,7 +49,7 @@ const Navbar: React.FC = () => {
 								<i className="fas fa-sign-in-alt" />
 							</span>
 						)}
-						<i className="fas fa-shopping-cart">
+						<i className="fas fa-shopping-cart" onClick={() => history.push('/cart')}>
 							<div className="cart-number">
 								{cart.items.reduce((cum, curr) => curr.quantity + cum, 0)}
 							</div>
