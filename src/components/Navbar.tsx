@@ -70,6 +70,7 @@ const StyledNav = styled.nav`
 
 	& > div {
 		display: flex;
+		align-items: center;
 	}
 
 	.logo {
@@ -128,6 +129,7 @@ const StyledNav = styled.nav`
 	.profile {
 		margin-left: 0.1rem;
 		margin-right: 0.2rem;
+		cursor: pointer;
 	}
 
 	@media screen and (max-width: 720px) {

@@ -6,7 +6,15 @@ const routes: RouteConfig[] = [
 	{
 		path: '',
 		component: MainLayout,
-		routes: [{ path: '/', exact: true, component: lazy(() => import('./pages/Home')) }],
+		routes: [
+			{ path: '/', exact: true, component: lazy(() => import('./pages/Home')) },
+			{ path: '/products', exact: true, component: lazy(() => import('./pages/Home')) },
+			{
+				path: '/products/:id',
+				exact: true,
+				component: lazy(() => import('./pages/ProductDetail')),
+			},
+		],
 	},
 ];
 

@@ -10,16 +10,22 @@ interface Props {
 const ProductCard: React.FC<Props> = ({ product }) => {
 	const history = useHistory();
 
+	const addToCart = () => {
+		console.log('add to cart!!! ', product.id);
+	};
+
 	return (
-		<StyledCard onClick={() => history.push(`/products/${product.id}`)}>
-			<div className="image">
+		<StyledCard>
+			<div className="image" onClick={() => history.push(`/products/${product.id}`)}>
 				<img src={product.imageUrl} alt={product.name} />
 			</div>
-			<div className="info">
+			<div className="info" onClick={() => history.push(`/products/${product.id}`)}>
 				<h4>{product.name}</h4>
 				<p className="item-description">{product.description}</p>
 			</div>
-			<div className="add-to-cart-btn">ADD TO CART</div>
+			<div className="add-to-cart-btn" onClick={addToCart}>
+				ADD TO CART
+			</div>
 		</StyledCard>
 	);
 };

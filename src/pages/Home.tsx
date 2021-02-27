@@ -1,5 +1,6 @@
 import React from 'react';
 import { BeatLoader } from 'react-spinners';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { Product } from '../@types';
 import ProductCard from '../components/ProductCard';
@@ -12,10 +13,16 @@ const HomePage: React.FC = () => {
 	React.useEffect(() => {
 		const db = firebase.firestore();
 		const fetchProducts = async () => {
-			const data = await db.collection('products').get();
-			setProducts(data.docs.map((doc) => doc.data()) as any);
+			try {
+				setLoading(true);
+				const data = await db.collection('products').get();
+				setProducts(data.docs.map((doc) => doc.data()) as any);
 
-			setLoading(false);
+				setLoading(false);
+			} catch (error) {
+				toast.error(error.message);
+				setLoading(false);
+			}
 		};
 		fetchProducts();
 	}, []);
