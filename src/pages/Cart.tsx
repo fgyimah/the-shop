@@ -12,6 +12,7 @@ import { resetCart } from '../store/cart.reducer';
 
 const Cart: React.FC = () => {
 	const cart = useSelector((state: RootState) => state.cart);
+	const [email, setEmail] = React.useState('');
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const initializePayment = usePaystackPayment({
@@ -20,9 +21,21 @@ const Cart: React.FC = () => {
 			Number(
 				cart.items.reduce((prev, curr) => prev + curr.quantity * curr.product.price, 0).toFixed(2)
 			),
-		email: firebase.auth().currentUser?.email || '',
+		email,
 		publicKey: 'pk_test_0c07246f86b994d9c2c6f09f4759a3d4c45cae37',
 		currency: 'GHS',
+	});
+
+	React.useEffect(() => {
+		const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+			if (user !== null) {
+				setEmail(user?.email!);
+			}
+		});
+
+		return () => {
+			unsubscribe();
+		};
 	});
 
 	const onSuccessPayment = () => {
@@ -39,8 +52,9 @@ const Cart: React.FC = () => {
 		if (firebase.auth().currentUser === null) {
 			toast.error('Please log in to check out');
 			return;
+		} else {
+			initializePayment(onSuccessPayment);
 		}
-		initializePayment(onSuccessPayment);
 	};
 
 	return (
