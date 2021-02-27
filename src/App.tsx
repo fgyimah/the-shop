@@ -6,14 +6,17 @@ import routes from './routes';
 import GlobalStyle from './theme/global';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { HelmetProvider } from 'react-helmet-async';
 
 const App: React.FC = () => {
 	return (
 		<Router>
 			<GlobalStyle />
 
-			{/* render application routes */}
-			{renderRoutes(routes)}
+			<HelmetProvider>
+				{/* render application routes */}
+				{renderRoutes(routes)}
+			</HelmetProvider>
 
 			<ToastContainer />
 		</Router>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { BeatLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
@@ -37,6 +38,7 @@ const HomePage: React.FC = () => {
 
 	return (
 		<StyledDiv>
+			<Helmet title="Home | tendo-shop" />
 			{products.map((product) => (
 				<ProductCard product={product} key={product.id} />
 			))}

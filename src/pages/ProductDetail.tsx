@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
+import { Helmet } from 'react-helmet-async';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
@@ -60,6 +61,7 @@ const ProductDetail: React.FC = () => {
 
 	return (
 		<StyledDiv>
+			<Helmet title={`${product?.name} | tendo-shop`} />
 			<div>
 				<img src={product?.imageUrl} alt={product?.name} className="product-image" />
 			</div>
