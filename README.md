@@ -1,7 +1,7 @@
 # tendoSHOP
 
 ![App Version](https://img.shields.io/badge/version-0.1.0-green.svg)
-![Typescript version](https://img.shields.io/badge/typescript-3.9.7-blue.svg)
+![Typescript version](https://img.shields.io/badge/typescript-4.1.2-blue.svg)
 ![React version](https://img.shields.io/badge/react-17.0.0-blue)
 
 E-commerce shopping cart application written in typescript using the ReactJS framework, as firebase as backend.
