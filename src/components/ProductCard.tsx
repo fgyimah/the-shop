@@ -16,12 +16,12 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 	const dispatch = useDispatch();
 
 	const addedToCart = () => {
-		return cart.items.findIndex((item) => item.productId === product.id) !== -1;
+		return cart.items.findIndex((item) => item.product.id === product.id) !== -1;
 	};
 
 	const addToCart = () => {
 		if (addedToCart()) return;
-		dispatch(addItemToCart(product.id));
+		dispatch(addItemToCart(product));
 	};
 
 	return (
