@@ -62,10 +62,10 @@ const ProductDetail: React.FC = () => {
 	return (
 		<StyledDiv>
 			<Helmet title={`${product?.name} | tendo-shop`} />
-			<div>
+			<div className="img-div">
 				<img src={product?.imageUrl} alt={product?.name} className="product-image" />
 			</div>
-			<div>
+			<div className="details-div">
 				<h1 className="product-name">{product?.name}</h1>
 				<h2 className="product-price">GH₵ {product?.price}</h2>
 				<p className="product-description">{product?.description}</p>
@@ -107,8 +107,19 @@ const StyledDiv = styled.div`
 	& > div:nth-child(-n + 2) {
 		width: 80%;
 	}
+	.img-div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.details-div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
 	.product-image {
-		width: 100%;
+		width: 70%;
 	}
 	.product-name {
 		font-size: 6rem;

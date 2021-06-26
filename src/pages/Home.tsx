@@ -37,19 +37,21 @@ const HomePage: React.FC = () => {
 	}
 
 	return (
-		<StyledDiv>
+		<div>
 			<Helmet title="Home | tendo-shop" />
-			{products.map((product) => (
-				<ProductCard product={product} key={product.id} />
-			))}
-		</StyledDiv>
+			<StyledDiv>
+				{products.map((product) => (
+					<ProductCard product={product} key={product.id} />
+				))}
+			</StyledDiv>
+		</div>
 	);
 };
 
 const StyledDiv = styled.div`
 	min-height: 80vh;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(320px, 0.3fr));
+	grid-template-columns: 1fr 1fr 1fr;
 
 	@media screen and (max-width: 720px) {
 		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
