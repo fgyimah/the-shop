@@ -1,4 +1,4 @@
-# tendoSHOP
+# THEShop
 
 ![App Version](https://img.shields.io/badge/version-0.1.0-green.svg)
 ![Typescript version](https://img.shields.io/badge/typescript-4.1.2-blue.svg)

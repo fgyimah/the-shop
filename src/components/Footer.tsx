@@ -6,8 +6,7 @@ const Footer: React.FC = () => {
 		<StyledDiv>
 			<p>Nothing but the best in products and customer service</p>
 			<p>
-				© {new Date().getFullYear()} <strong className="logo">tendoSHOP, </strong> all rights
-				reserved
+				© {new Date().getFullYear()} <strong className="logo">THEShop, </strong> all rights reserved
 			</p>
 		</StyledDiv>
 	);

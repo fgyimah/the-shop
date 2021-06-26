@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
 		<>
 			<StyledNav>
 				<NavLink to="/" className="logo">
-					<h1>tendoSHOP</h1>
+					<h1>THEShop</h1>
 				</NavLink>
 				<div>
 					{/* <input type="text" className="searchField" placeholder="Search Products" /> */}
