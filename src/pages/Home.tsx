@@ -51,10 +51,18 @@ const HomePage: React.FC = () => {
 const StyledDiv = styled.div`
 	min-height: 80vh;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 
-	@media screen and (max-width: 720px) {
-		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	@media screen and (max-width: 1120px) {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	@media screen and (max-width: 800px) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@media screen and (max-width: 540px) {
+		grid-template-columns: 1fr;
 	}
 `;
 
