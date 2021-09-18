@@ -10,16 +10,16 @@ const middlewares = [thunk];
 let store: any;
 
 const persistConfig = {
-	key: 'tendoSHOP-root',
-	storage,
+    key: 'tendoSHOP-root',
+    storage,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 if (process.env.NODE_ENV === 'development') {
-	store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(...middlewares)));
+    store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(...middlewares)));
 } else {
-	store = createStore(persistedReducer, applyMiddleware(...middlewares));
+    store = createStore(persistedReducer, applyMiddleware(...middlewares));
 }
 
 export const persistor = persistStore(store);
