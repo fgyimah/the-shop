@@ -9,18 +9,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import { HelmetProvider } from 'react-helmet-async';
 
 const App: React.FC = () => {
-	return (
-		<Router>
-			<GlobalStyle />
+    return (
+        <Router>
+            <GlobalStyle />
 
-			<HelmetProvider>
-				{/* render application routes */}
-				{renderRoutes(routes)}
-			</HelmetProvider>
+            <HelmetProvider>
+                {/* render application routes */}
+                {renderRoutes(routes)}
+            </HelmetProvider>
 
-			<ToastContainer />
-		</Router>
-	);
+            <ToastContainer />
+        </Router>
+    );
 };
 
 export default App;

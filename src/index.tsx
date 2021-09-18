@@ -6,10 +6,10 @@ import App from './App';
 import store, { persistor } from './store';
 
 ReactDOM.render(
-	<ReduxProvider store={store}>
-		<PersistGate persistor={persistor}>
-			<App />
-		</PersistGate>
-	</ReduxProvider>,
-	document.getElementById('root')
+    <ReduxProvider store={store}>
+        <PersistGate persistor={persistor}>
+            <App />
+        </PersistGate>
+    </ReduxProvider>,
+    document.getElementById('root')
 );

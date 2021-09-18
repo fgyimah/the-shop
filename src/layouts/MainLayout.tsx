@@ -6,28 +6,28 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
 const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => {
-	return (
-		<div>
-			<Navbar />
-			<Suspense
-				fallback={
-					<StyledDiv>
-						<BeatLoader />
-					</StyledDiv>
-				}
-			>
-				{renderRoutes(route?.routes)}
-			</Suspense>
-			<Footer />
-		</div>
-	);
+    return (
+        <div>
+            <Navbar />
+            <Suspense
+                fallback={
+                    <StyledDiv>
+                        <BeatLoader />
+                    </StyledDiv>
+                }
+            >
+                {renderRoutes(route?.routes)}
+            </Suspense>
+            <Footer />
+        </div>
+    );
 };
 
 const StyledDiv = styled.div`
-	height: 80vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export default MainLayout;
