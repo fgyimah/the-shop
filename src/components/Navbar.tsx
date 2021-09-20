@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
                             </span>
                         )}
                         <i className="fas fa-shopping-cart" onClick={() => history.push('/cart')}>
-                            <div className="cart-number">
+                            <div className="cart-number" data-testid="cart-number">
                                 {cart.items.reduce((cum, curr) => curr.quantity + cum, 0)}
                             </div>
                         </i>

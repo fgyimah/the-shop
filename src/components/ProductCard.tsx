@@ -27,11 +27,13 @@ const ProductCard: React.FC<Props> = ({ product }) => {
     return (
         <StyledCard>
             <div className="image" onClick={() => history.push(`/products/${product.id}`)}>
-                <img src={product.imageUrl} alt={product.name} />
+                <img src={product.imageUrl} alt={product.name} data-testid="product-image" />
             </div>
             <div className="info" onClick={() => history.push(`/products/${product.id}`)}>
-                <h4>{product.name}</h4>
-                <p className="item-description">{product.description}</p>
+                <h4 data-testid="product-name">{product.name}</h4>
+                <p className="item-description" data-testid="product-description">
+                    {product.description}
+                </p>
             </div>
             <div
                 className={`add-to-cart-btn ${addedToCart() ? 'added-to-cart' : ''}`}
@@ -39,7 +41,11 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             >
                 {addedToCart() ? 'ADDED TO CART' : 'ADD TO CART'}
             </div>
-            <div className="price-div" onClick={() => history.push(`/products/${product.id}`)}>
+            <div
+                className="price-div"
+                onClick={() => history.push(`/products/${product.id}`)}
+                data-testid="product-price"
+            >
                 GH₵ {product.price}
             </div>
         </StyledCard>

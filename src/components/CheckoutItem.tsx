@@ -32,16 +32,20 @@ const CheckoutItem: React.FC<Props> = ({ cartItem }) => {
                 </div>
                 <span className="name">{product.name}</span>
                 <span className="quantity">
-                    <div className="arrow" onClick={decreaseCount}>
+                    <div className="arrow" onClick={decreaseCount} data-testid="btn-decrease-count">
                         &#10094;
                     </div>
-                    <span className="value">{quantity}</span>
-                    <div className="arrow" onClick={increaseCount}>
+                    <span className="value" data-testid="product-quantity">
+                        {quantity}
+                    </span>
+                    <div className="arrow" onClick={increaseCount} data-testid="btn-increase-count">
                         &#10095;
                     </div>
                 </span>
-                <span className="price">{product.price}</span>
-                <div className="remove-button" onClick={removeItem}>
+                <span className="price" data-testid="product-price">
+                    {product.price}
+                </span>
+                <div className="remove-button" onClick={removeItem} data-testid="btn-remove">
                     &#10005;
                 </div>
             </div>

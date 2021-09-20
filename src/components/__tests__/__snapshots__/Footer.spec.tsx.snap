@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Test - Footer matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ kkhNPp"
+  >
+    <p>
+      Nothing but the best in products and customer service
+    </p>
+    <p>
+      © 2021 
+      <strong
+        class="logo"
+      >
+        THEShop, 
+      </strong>
+       all rights reserved
+    </p>
+  </div>
+</DocumentFragment>
+`;

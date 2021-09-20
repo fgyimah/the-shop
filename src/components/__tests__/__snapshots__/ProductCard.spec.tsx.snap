@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Test - ProductCard matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ cRUtw"
+  >
+    <div
+      class="image"
+    >
+      <img
+        alt="fake-product"
+        data-testid="product-image"
+        src=""
+      />
+    </div>
+    <div
+      class="info"
+    >
+      <h4
+        data-testid="product-name"
+      >
+        fake-product
+      </h4>
+      <p
+        class="item-description"
+        data-testid="product-description"
+      >
+        fake description
+      </p>
+    </div>
+    <div
+      class="add-to-cart-btn "
+    >
+      ADD TO CART
+    </div>
+    <div
+      class="price-div"
+      data-testid="product-price"
+    >
+      GH₵ 99
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Test - CheckoutItem matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ hrReyS"
+  >
+    <div
+      class="checkout-item"
+    >
+      <div
+        class="image-container"
+      >
+        <img
+          alt="item"
+          src=""
+        />
+      </div>
+      <span
+        class="name"
+      >
+        fake-product
+      </span>
+      <span
+        class="quantity"
+      >
+        <div
+          class="arrow"
+          data-testid="btn-decrease-count"
+        >
+          ❮
+        </div>
+        <span
+          class="value"
+          data-testid="product-quantity"
+        >
+          5
+        </span>
+        <div
+          class="arrow"
+          data-testid="btn-increase-count"
+        >
+          ❯
+        </div>
+      </span>
+      <span
+        class="price"
+        data-testid="product-price"
+      >
+        99
+      </span>
+      <div
+        class="remove-button"
+        data-testid="btn-remove"
+      >
+        ✕
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

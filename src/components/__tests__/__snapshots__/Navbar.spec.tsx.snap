@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Test - Navbar matches snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    class="sc-gsTCUz dtGUXi"
+  >
+    <a
+      aria-current="page"
+      class="logo active"
+      href="/"
+    >
+      <h1>
+        THEShop
+      </h1>
+    </a>
+    <div>
+      <span
+        class="login"
+      >
+        LOGIN 
+        <i
+          class="fas fa-sign-in-alt"
+        />
+      </span>
+      <div>
+        <i
+          class="fas fa-shopping-cart"
+        >
+          <div
+            class="cart-number"
+            data-testid="cart-number"
+          >
+            0
+          </div>
+        </i>
+      </div>
+    </div>
+  </nav>
+</DocumentFragment>
+`;
