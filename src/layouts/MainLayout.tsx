@@ -14,8 +14,7 @@ const MainLayout: React.FC<RouteConfigComponentProps> = ({ route }) => {
                     <StyledDiv>
                         <BeatLoader />
                     </StyledDiv>
-                }
-            >
+                }>
                 {renderRoutes(route?.routes)}
             </Suspense>
             <Footer />

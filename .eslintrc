@@ -1,0 +1,13 @@
+{
+    "env": {
+        "es6": true,
+        "jest": true
+    },
+    "extends": "@callstack/eslint-config/react",
+    "rules": {
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+        "prettier/prettier": "warn",
+        "no-case-declarations": "off",
+        "react/react-in-jsx-scope": "off"
+    }
+}

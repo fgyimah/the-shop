@@ -37,15 +37,13 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             </div>
             <div
                 className={`add-to-cart-btn ${addedToCart() ? 'added-to-cart' : ''}`}
-                onClick={addToCart}
-            >
+                onClick={addToCart}>
                 {addedToCart() ? 'ADDED TO CART' : 'ADD TO CART'}
             </div>
             <div
                 className="price-div"
                 onClick={() => history.push(`/products/${product.id}`)}
-                data-testid="product-price"
-            >
+                data-testid="product-price">
                 GH₵ {product.price}
             </div>
         </StyledCard>

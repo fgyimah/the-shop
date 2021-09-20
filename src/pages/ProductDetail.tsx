@@ -73,8 +73,7 @@ const ProductDetail: React.FC = () => {
                         variant="contained"
                         className="btn btn-cart"
                         disabled={addedToCart()}
-                        onClick={addToCart}
-                    >
+                        onClick={addToCart}>
                         {addedToCart() ? (
                             <>
                                 ADDED TO CART <i className="fas fa-heart"></i>
@@ -88,8 +87,7 @@ const ProductDetail: React.FC = () => {
                     <WhatsappShareButton url={window.location.href}>
                         <span
                             className="btn btn-whatsapp"
-                            title={`${product?.name} - GH₵ ${product?.price}`}
-                        >
+                            title={`${product?.name} - GH₵ ${product?.price}`}>
                             SHARE ON WHATSAPP <i className="fab fa-whatsapp"></i>
                         </span>
                     </WhatsappShareButton>
@@ -98,8 +96,7 @@ const ProductDetail: React.FC = () => {
             <Button
                 variant="contained"
                 className="back-btn"
-                onClick={() => history.push('/products')}
-            >
+                onClick={() => history.push('/products')}>
                 <i className="fas fa-long-arrow-alt-left"></i>
             </Button>
         </StyledDiv>

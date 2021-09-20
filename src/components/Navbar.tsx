@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import AuthenticationModal from './AuthenticationModal';
 import firebase from '../firebase';
 import { logoutUser } from '../helpers/auth.helpers';
 import { RootState } from '../store/root';
+import AuthenticationModal from './AuthenticationModal';
 
 const Navbar: React.FC = () => {
     const [authModalOpen, setAuthModalOpen] = React.useState(false);
