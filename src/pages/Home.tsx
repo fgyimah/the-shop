@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
 
     return (
         <div>
-            <Helmet title="Home | tendo-shop" />
+            <Helmet title="Home | the-shop" />
             <StyledDiv>
                 {products.map((product) => (
                     <ProductCard product={product} key={product.id} />

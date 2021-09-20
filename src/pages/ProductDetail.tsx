@@ -60,7 +60,7 @@ const ProductDetail: React.FC = () => {
 
     return (
         <StyledDiv>
-            <Helmet title={`${product?.name} | tendo-shop`} />
+            <Helmet title={`${product?.name} | the-shop`} />
             <div className="img-div">
                 <img src={product?.imageUrl} alt={product?.name} className="product-image" />
             </div>

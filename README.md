@@ -10,42 +10,42 @@ E-commerce shopping cart application written in typescript using the ReactJS fra
 
 To begin the following are recommended
 
-- Node v12.8 or higher
-- Yarn v1.22.0 or higher
-- Firebase account
+-   Node v12.8 or higher
+-   Yarn v1.22.0 or higher
+-   Firebase account
 
 To begin the project in development mode
 
-- Install NodeJS and Yarn
-- Clone the repository from the Github URL
-- Run `yarn install` or simply `yarn` to install all the project's dependencies.
-- Create a firebase project and allow email authentication, google authentication, firestore with permission set to read and write by unauthorized users.
-- Copy the `.env.example` file and create a duplicate with the name `.env` and fill in the firebase credentials.
-- Run `yarn start` to run the project in development mode
+-   Install NodeJS and Yarn
+-   Clone the repository from the Github URL
+-   Run `yarn install` or simply `yarn` to install all the project's dependencies.
+-   Create a firebase project and allow email authentication, google authentication, firestore with permission set to read and write by unauthorized users.
+-   Copy the `.env.example` file and create a duplicate with the name `.env` and fill in the firebase credentials.
+-   Run `yarn start` to run the project in development mode
 
 ## Dependencies
 
 > Note that not all dependencies are written here, this list is limited to core project dependencies only
 
-- `react` - Core Frontend library for building reusable components
-- `@material-ui/core && @material/icons` - Material design system component and icons library for react
-- `firebase` - Javascript firebase client for connecting to firebase.
-- `formik` - library for easy management of forms in a react application
-- `react-paystack` - For integrating paystack payment api into react apps
-- `react-router-dom` - For routing in react apps
-- `react-router-config` - For declaring react routes in a declarative way
-- `react-share` - For easy sharing to social application from a react app
-- `react-spinners` - For loading animations in react apps
-- `react-tabs` - For easy tab implementation in react apps
-- `react-toastify` - For displaying nice toast messages in react applications
-- `redux` - State management tool for javascript apps
-- `react-redux` - For connecting react apps to redux states
-- `redux-thunk` - For writing redux actions that returns functions instead of objects
-- `redux-persist` - For saving redux state, even over full page refresh
-- `redux-devtools-extension` - For connecting redux apps to the redux devtools extension in chrome, firefox and edge browsers
-- `styled-components` - For declaring styles for react apps in a component based structure
-- `typescript` - Allows for typescript support and compilation
-- `yup` - For Easy form validation, Yup + Formik = 🤩
+-   `react` - Core Frontend library for building reusable components
+-   `@material-ui/core && @material/icons` - Material design system component and icons library for react
+-   `firebase` - Javascript firebase client for connecting to firebase.
+-   `formik` - library for easy management of forms in a react application
+-   `react-paystack` - For integrating paystack payment api into react apps
+-   `react-router-dom` - For routing in react apps
+-   `react-router-config` - For declaring react routes in a declarative way
+-   `react-share` - For easy sharing to social application from a react app
+-   `react-spinners` - For loading animations in react apps
+-   `react-tabs` - For easy tab implementation in react apps
+-   `react-toastify` - For displaying nice toast messages in react applications
+-   `redux` - State management tool for javascript apps
+-   `react-redux` - For connecting react apps to redux states
+-   `redux-thunk` - For writing redux actions that returns functions instead of objects
+-   `redux-persist` - For saving redux state, even over full page refresh
+-   `redux-devtools-extension` - For connecting redux apps to the redux devtools extension in chrome, firefox and edge browsers
+-   `styled-components` - For declaring styles for react apps in a component based structure
+-   `typescript` - Allows for typescript support and compilation
+-   `yup` - For Easy form validation, Yup + Formik = 🤩
 
 ## Application Structure
 
@@ -70,4 +70,4 @@ The `src` folder is structured as follows:
 
 # Deployment
 
-> Application is initially deployed to netlify with [this URL](https://tendo-shop.netlify.app)
+> Application is initially deployed to netlify with [this URL](https://the-shopp.netlify.app)
