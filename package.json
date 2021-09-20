@@ -5,6 +5,7 @@
     "dependencies": {
         "@material-ui/core": "^4.11.3",
         "@material-ui/icons": "^4.11.2",
+        "cross-env": "^7.0.3",
         "firebase": "^8.2.9",
         "formik": "^2.2.6",
         "react": "^17.0.1",
@@ -42,17 +43,20 @@
         "@types/react-router-dom": "^5.1.7",
         "@types/react-tabs": "^2.3.2",
         "@types/styled-components": "^5.1.7",
+        "husky": "^7.0.2",
         "prettier": "^2.4.1"
     },
     "scripts": {
         "start": "react-scripts start",
-        "dev": "BROWSER=none react-scripts start",
+        "dev": "cross-env BROWSER=none react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
+        "test:ci": "cross-env CI=true react-scripts test",
         "eject": "react-scripts eject",
         "lint": "eslint .",
         "lint:fix": "eslint",
-        "format": "prettier ."
+        "format": "prettier .",
+        "prepare": "husky install"
     },
     "eslintConfig": {
         "extends": [
